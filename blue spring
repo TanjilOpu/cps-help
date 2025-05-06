@@ -1,0 +1,76 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define int long long int
+// #define endl '\n'
+#define yes cout << "YES"<<endl
+#define no cout << "NO"<<endl
+#define nn cout << endl
+#define vc vector<int>
+#define pb push_back
+#define ppb pop_back
+#define f0(n) for (int i = 0; i < n; i++)
+#define f1(n) for (int i = 1; i <= n; i++)
+#define all(a) sort(a.begin(),a.end())
+#define rall(a) sort(a.rbegin(),a.rend())
+const int mod = 1e9 + 7;
+#define debug(x) cerr << (#x) << " " << (x) << endl
+#define fast()                            \
+    {                                     \
+        ios_base::sync_with_stdio(false); \
+        cin.tie(NULL);                    \
+    }
+int msum=0;
+void solve()
+{
+    int n,k,x;
+    cin>>n>>k>>x;
+    vector<int>v(n);
+ //   int msum=0;
+    f0(n)
+    {
+        cin>>v[i];
+        msum+=v[i]%mod;
+    } 
+
+
+    all(v);
+    int l=k;
+    while(v.size()>0)
+    {
+        l=k;
+       // cout<<"msum = "<<msum<<endl;
+
+        int sum=0;
+        while(l--)
+        {
+            sum+=v.back()%mod;
+            v.pop_back();
+        }
+        if(sum< x || sum==0)
+        {
+        
+            cout<<msum%mod<<endl;
+           return;
+            
+        }
+        else{
+            msum = msum -(sum-x);
+            msum=msum%mod;
+        }
+        // if(l==1)
+        // {
+        //     break;
+
+        // }
+    }
+   
+}
+
+int32_t main()
+{
+    fast();
+    int t=1;
+   // cin >> t;
+    while (t--)
+        solve();
+}
